@@ -1,14 +1,51 @@
-* {
+/* ===== RESET TOTAL HILANGKAN EFEK BIRU ===== */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
 }
 
-/* ===== HILANGKAN EFEK BIRU ===== */
-*:focus {
+/* ===== FOCUS TANPA BIRU ===== */
+*:focus,
+*:focus-visible,
+*:active {
   outline: none !important;
   box-shadow: none !important;
+  border-color: inherit !important;
+}
+
+/* ===== INPUT FOCUS TETAP KELIHATAN TAPI TANPA BIRU ===== */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.2) !important;
+  border-color: #7c4dff !important;
+}
+
+/* ===== TOMBOL TANPA EFEK BIRU ===== */
+button:focus,
+button:focus-visible,
+button:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+/* ===== HILANGKAN HIGHLIGHT SAAT KLIK DI MOBILE ===== */
+input,
+textarea,
+button,
+select,
+a,
+div[role="button"] {
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 /* ===== HILANGKAN SELECTION BLUE ===== */
@@ -16,13 +53,18 @@
   background: #7c4dff;
   color: #fff;
 }
+::-moz-selection {
+  background: #7c4dff;
+  color: #fff;
+}
 
-/* ===== HILANGKAN HIGHLIGHT SAAT KLIK ===== */
-button:focus-visible,
-input:focus-visible,
-select:focus-visible {
-  outline: none !important;
-  box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.3) !important;
+/* ===== RESET BUTTON ===== */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 /* ===== SMOOTH SCROLL ===== */
@@ -75,6 +117,7 @@ body {
   cursor: pointer;
   transition: transform 0.3s ease;
 }
+.logo:active { transform: scale(0.95); }
 .logo:hover { transform: scale(1.05); }
 .logo i {
   margin-right: 6px;
@@ -109,13 +152,16 @@ body {
   transition: all 0.3s ease;
   padding: 0.4rem;
   border-radius: 50%;
+  -webkit-tap-highlight-color: transparent !important;
 }
 .btn-icon:hover { 
   color: #b388ff; 
   background: rgba(124, 77, 255, 0.1);
-  transform: scale(1.1);
 }
-.btn-icon:active { transform: scale(0.95); }
+.btn-icon:active { 
+  transform: scale(0.9);
+  background: rgba(124, 77, 255, 0.2);
+}
 
 .badge {
   background: #7c4dff;
@@ -146,12 +192,16 @@ body {
   font-size: 0.75rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent !important;
 }
 .btn-logout:hover { 
   border-color: #ff6b6b; 
   color: #ff6b6b;
   background: rgba(255, 107, 107, 0.1);
-  transform: translateY(-2px);
+}
+.btn-logout:active { 
+  transform: scale(0.95);
+  background: rgba(255, 107, 107, 0.2);
 }
 
 /* ===== NAV TABS ===== */
@@ -174,21 +224,23 @@ body {
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  -webkit-tap-highlight-color: transparent !important;
 }
 .nav-tabs button:hover { 
   color: #ddd; 
   background: #161616;
-  transform: translateY(-2px);
+}
+.nav-tabs button:active { 
+  transform: scale(0.95);
+  background: rgba(124, 77, 255, 0.1);
 }
 .nav-tabs button.active {
   color: #fff;
   background: #7c4dff;
   box-shadow: 0 4px 16px rgba(124, 77, 255, 0.3);
-  transform: translateY(0);
 }
-.nav-tabs button.active:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(124, 77, 255, 0.4);
+.nav-tabs button.active:active {
+  transform: scale(0.95);
 }
 .nav-tabs button:disabled {
   opacity: 0.4;
@@ -280,11 +332,11 @@ body {
   font-size: 0.95rem;
   margin-bottom: 0.8rem;
   transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent !important;
 }
 .login-box input:focus { 
   border-color: #7c4dff; 
-  box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.2);
-  transform: scale(1.01);
+  box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.2) !important;
 }
 .login-box .btn-login {
   width: 100%;
@@ -299,13 +351,16 @@ body {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent !important;
 }
 .login-box .btn-login:hover { 
   background: #6a3de8;
-  transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(124, 77, 255, 0.3);
 }
-.login-box .btn-login:active { transform: scale(0.97); }
+.login-box .btn-login:active { 
+  transform: scale(0.97);
+  background: #5a2dd8;
+}
 .login-box .error-msg {
   color: #ff6b6b;
   font-size: 0.8rem;
@@ -341,6 +396,7 @@ body {
   box-shadow: 0 12px 40px rgba(124, 77, 255, 0.15);
   border-color: #3a2a4a;
 }
+.banner-sale:active { transform: scale(0.99); }
 .banner-sale .sale-text h2 {
   font-size: 1.6rem;
   font-weight: 700;
@@ -357,13 +413,16 @@ body {
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 16px rgba(124, 77, 255, 0.25);
+  -webkit-tap-highlight-color: transparent !important;
 }
 .btn-shopnow:hover { 
   background: #6a3de8; 
-  transform: scale(1.05) translateY(-2px);
   box-shadow: 0 8px 32px rgba(124, 77, 255, 0.35);
 }
-.btn-shopnow:active { transform: scale(0.97); }
+.btn-shopnow:active { 
+  transform: scale(0.95);
+  background: #5a2dd8;
+}
 
 /* ===== CATEGORY TABS ===== */
 .category-tabs {
@@ -383,6 +442,7 @@ body {
   border-bottom: 2px solid transparent;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  -webkit-tap-highlight-color: transparent !important;
 }
 .category-tabs span::after {
   content: '';
@@ -401,6 +461,7 @@ body {
 .category-tabs span:hover::after {
   width: 60%;
 }
+.category-tabs span:active { transform: scale(0.95); }
 .category-tabs span.active { 
   color: #b388ff; 
   border-bottom-color: #7c4dff;
@@ -427,6 +488,7 @@ body {
   align-items: flex-start;
   position: relative;
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent !important;
 }
 .product-card::before {
   content: '';
@@ -450,7 +512,7 @@ body {
 .product-card:hover::before {
   background: linear-gradient(135deg, #7c4dff, #b388ff, #7c4dff);
 }
-.product-card:active { transform: scale(0.98); }
+.product-card:active { transform: scale(0.97); }
 
 .product-img {
   width: 100%;
@@ -514,6 +576,7 @@ body {
   margin-top: 4px;
   position: relative;
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent !important;
 }
 .btn-add::before {
   content: '';
@@ -526,12 +589,14 @@ body {
 }
 .btn-add:hover { 
   color: #fff;
-  transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(124, 77, 255, 0.2);
 }
 .btn-add:hover::before { opacity: 1; }
+.btn-add:active { 
+  transform: scale(0.95);
+  box-shadow: 0 2px 8px rgba(124, 77, 255, 0.3);
+}
 .btn-add span { position: relative; z-index: 1; }
-.btn-add:active { transform: scale(0.96); }
 
 /* ===== ADMIN PANEL ===== */
 .admin-stats {
@@ -551,6 +616,7 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(124, 77, 255, 0.1);
 }
+.stat-box:active { transform: scale(0.97); }
 .stat-box .label { font-size: 0.7rem; color: #888; text-transform: uppercase; }
 .stat-box .value { 
   font-size: 1.6rem; 
@@ -601,13 +667,16 @@ body {
   cursor: pointer;
   font-size: 0.75rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-tap-highlight-color: transparent !important;
 }
 .btn-approve:hover { 
   background: #1b5e20;
-  transform: scale(1.05);
   box-shadow: 0 4px 16px rgba(46, 125, 50, 0.3);
 }
-.btn-approve:active { transform: scale(0.95); }
+.btn-approve:active { 
+  transform: scale(0.95);
+  background: #0f4a14;
+}
 
 /* ===== CART ===== */
 .cart-item-list { margin: 1rem 0; }
@@ -628,12 +697,15 @@ body {
   transition: all 0.3s ease;
   padding: 0.3rem 0.6rem;
   border-radius: 50%;
+  -webkit-tap-highlight-color: transparent !important;
 }
 .cart-item button:hover { 
   background: rgba(255, 107, 107, 0.1); 
-  transform: scale(1.2);
 }
-.cart-item button:active { transform: scale(0.9); }
+.cart-item button:active { 
+  transform: scale(0.9);
+  background: rgba(255, 107, 107, 0.2);
+}
 
 .checkout-grid {
   display: grid;
@@ -650,12 +722,12 @@ body {
   font-size: 0.9rem;
   width: 100%;
   transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent !important;
 }
 .checkout-grid input:focus, 
 .checkout-grid select:focus { 
   border-color: #7c4dff; 
-  box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.15);
-  transform: scale(1.01);
+  box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.15) !important;
 }
 .qr-box {
   background: #181818;
@@ -682,13 +754,16 @@ body {
   grid-column: 1 / -1;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-tap-highlight-color: transparent !important;
 }
 .btn-checkout:hover { 
   background: #6a3de8;
-  transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(124, 77, 255, 0.3);
 }
-.btn-checkout:active { transform: scale(0.97); }
+.btn-checkout:active { 
+  transform: scale(0.97);
+  background: #5a2dd8;
+}
 .btn-checkout:disabled { 
   opacity: 0.5; 
   cursor: not-allowed;
